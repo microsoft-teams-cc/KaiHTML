@@ -32,12 +32,11 @@ function logincheck() {
 	var soeid_actual = localStorage.soeid; 
 
 	if(password == pwd && soeid == soeid_actual){
+		sessionStorage.session = true;
 		window.close();
 		window.open("./home.jsp");
 	} else {
 		alert("Enter Correct Details");
-		window.close();
-		window.open("./login.jsp");
 	}
 };
 </script>

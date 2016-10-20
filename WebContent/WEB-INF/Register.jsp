@@ -42,7 +42,7 @@ function register() {
 	alert("Registartion Successful");
 	window.close();
 	window.open("./login.jsp");
-	};
+};
 </script>
 </body>
 </html>
