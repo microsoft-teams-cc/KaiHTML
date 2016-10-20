@@ -9,7 +9,7 @@
 <body>
 <div class="form-container">
     <h2>Login</h2>
-    <form method="post">
+    <form method="post" onsubmit="logincheck()">
         <div class="form-group">
             <label for="soeid">SOE ID</label>
             <input type="text" name="soeid" id="soeid" class="form-control" required/>
@@ -20,12 +20,26 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Login</button>
-            <a href="./register" class="btn btn-primary">Register</a>
+            <a href="./register.jsp" class="btn btn-primary">Register</a>
         </div>
     </form>
 </div>
 <script>
+function logincheck() {
+	var soeid = document.getElementById("soeid").value;
+	var pwd = document.getElementById("password").value;
+	var password = localStorage.pwd;
+	var soeid_actual = localStorage.soeid; 
 
+	if(password == pwd && soeid == soeid_actual){
+		window.close();
+		window.open("./home.jsp");
+	} else {
+		alert("Enter Correct Details");
+		window.close();
+		window.open("./login.jsp");
+	}
+};
 </script>
 </body>
 </html>

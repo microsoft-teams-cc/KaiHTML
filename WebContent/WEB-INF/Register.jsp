@@ -7,7 +7,7 @@
 <link href="./app.css" rel="stylesheet" />
 </head>
 <body>
-<div class="form-container">
+	<div class="form-container" onsubmit="register()">
     <h2>Register</h2>
     <form method="post">
         <div class="form-group">
@@ -28,9 +28,21 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Register</button>
-            <a href="./login.html" class="btn btn-primary">Cancel</a>
-        </div>
-    </form>
+            <a href="./login.jsp" class="btn btn-primary">Cancel</a></div>
+	</form>
 </div>
+<script>
+function register() {
+	var soeid = document.getElementById("soeid").value;
+	var pwd = document.getElementById("password").value;
+	var name = document.getElementById("firstName").value;
+	localStorage.soeid = soeid;
+	localStorage.pwd = pwd;
+	localStorage.name = name;
+	alert("Registartion Successful");
+	window.close();
+	window.open("./login.jsp");
+	};
+</script>
 </body>
 </html>
