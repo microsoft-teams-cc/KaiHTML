@@ -2,9 +2,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Register</title>
-<link href="./bootstrap.css" rel="stylesheet" />
-<link href="./app.css" rel="stylesheet" />
+	<title>Register</title>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/app.css" rel="stylesheet" />
+	<script src="js/htmlshiv.js"></script>
+    <script src="js/respond.js"></script>
+    <script src="js/jquery/jquery.js"></script>
 </head>
 <body>
 	<div class="form-container" onsubmit="register()">
@@ -13,10 +16,6 @@
         <div class="form-group">
             <label for="firstName">First name</label>
             <input type="text" name="firstName" id="firstName" class="form-control"  required />
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last name</label>
-            <input type="text" name="lastName" id="lastName" class="form-control" required />
         </div>
         <div class="form-group">
             <label for="soeid">SOE ID</label>
@@ -28,7 +27,8 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Register</button>
-            <a href="./login.jsp" class="btn btn-primary">Cancel</a></div>
+            <a href="./login.jsp" class="btn btn-primary">Cancel</a>
+        </div>
 	</form>
 </div>
 <script>
@@ -36,9 +36,15 @@ function register() {
 	var soeid = document.getElementById("soeid").value;
 	var pwd = document.getElementById("password").value;
 	var name = document.getElementById("firstName").value;
-	localStorage.soeid = soeid;
-	localStorage.pwd = pwd;
-	localStorage.name = name;
+	var users = JSON.parse(localStorage.users);
+	var passwords = JSON.parse(localStorage.passwords);
+	var soeids = JSON.parse(localStorage.soeids);
+	users.push(name);
+	passwords.push(pwd);
+	soeids.push(soeid);
+	localStorage.users = JSON.stringify(users);
+	localStorage.soeids = JSON.stringify(soeids);
+	localStorage.passwords = JSON.stringify(passwords);
 	alert("Registartion Successful");
 	window.close();
 	window.open("./login.jsp");

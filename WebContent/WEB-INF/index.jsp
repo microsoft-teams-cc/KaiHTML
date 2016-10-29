@@ -14,7 +14,7 @@
 		<form id="search" class="form-inline">
 			<div class="form-group">
 				&emsp;&emsp;&emsp;
-				<label class="sr-only">Search</label> <input type="keyword"
+				<label class="sr-only">Search</label> <input type="text"
 					class="form-control" id="keyword" placeholder="Keyword">
 				<button type="submit" class="btn btn-default">Search Kai</button>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -25,7 +25,7 @@
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				&emsp;&emsp;&emsp;
-				<a href="./home.jsp" class="btn btn-primary">Your Home</a>
+				<a href="./home.jsp" class="btn btn-primary">Your Dashboard</a>
 			</div>
 		</form>
 	</div>
@@ -48,6 +48,7 @@
 					var sessionState = sessionStorage.session;
 					var init = localStorage.init;
 					if (!(init == "true")) {
+						alert("Initialising");
 						var projects = [ "AT Pricing", "Mongo-Nodejs", "3.3.1",
 								"Struts Helper", "Cucumber Framework",
 								"Trade Logs", "AT Pricing", "Mongo-Nodejs",
@@ -129,8 +130,11 @@
 								"Bootstraps", "MVC Providers",
 								"Testing Frameworks", "Dashboard Helpers" ];
 						var users = [ "sai", "mani", "teja" ];
+						var soeids = ["sn26232" , "bm64503" , "dk63507"];
 						var passwords = [ "sai", "mani", "teja" ];
+						var jiras_temp = ["fdh" , "hd", "fhds", "hd"];
 						localStorage.projects = JSON.stringify(projects);
+						localStorage.jiras_temp = JSON.stringify(jiras_temp);
 						localStorage.owners = JSON.stringify(owners);
 						localStorage.links = JSON.stringify(links);
 						localStorage.jiras = JSON.stringify(jiras);
@@ -138,6 +142,7 @@
 						localStorage.types = JSON.stringify(types);
 						localStorage.projectTypes = JSON.stringify(projectTypes);
 						localStorage.users = JSON.stringify(users);
+						localStorage.soeids = JSON.stringify(soeids);
 						localStorage.passwords = JSON.stringify(passwords);
 						localStorage.descriptions = JSON
 								.stringify(descriptions);

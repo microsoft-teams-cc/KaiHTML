@@ -3,8 +3,11 @@
 <head>
 	<meta charset="ISO-8859-1" />
 	<title>Login</title>
-	<link href="./bootstrap.css" rel="stylesheet" />
-	<link href="./app.css" rel="stylesheet" />
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/app.css" rel="stylesheet" />
+	<script src="js/htmlshiv.js"></script>
+    <script src="js/respond.js"></script>
+    <script src="js/jquery/jquery.js"></script>
 </head>
 <body>
 <div class="form-container">
@@ -28,11 +31,23 @@
 function logincheck() {
 	var soeid = document.getElementById("soeid").value;
 	var pwd = document.getElementById("password").value;
-	var password = localStorage.pwd;
-	var soeid_actual = localStorage.soeid; 
+	var users = JSON.parse(localStorage.users);
+	var passwords = JSON.parse(localStorage.passwords);
+	var soeids = JSON.parse(localStorage.soeids);
+	var password_i = null;
+	var user_i = null;
+	
+	$.each(soeids,function(i, soeid_i) {
+		if(soeid_i == soeid){
+			password_i = passwords[i];
+			user_i = users[i];
+		}
+	});
 
-	if(password == pwd && soeid == soeid_actual){
+	if(password_i == pwd){
 		sessionStorage.session = true;
+		sessionStorage.user = user_i;
+		sessionStorage.soeid = soeid;
 		window.close();
 		window.open("./home.jsp");
 	} else {
