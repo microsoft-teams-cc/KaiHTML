@@ -19,7 +19,7 @@
 		</script>
 	</h2>
 	<div class="row">
-			<form id="search" class="form-inline">
+			<form id="search" class="form-inline" onsubmit="search()">
 				<div class="form-group">
 					&emsp;&emsp; 
 					<label class="sr-only">Search</label> <input 
@@ -94,6 +94,12 @@
 			if(enter == false){
 				alert("You have no approved projects yet yo display");
 			}
+		};
+		
+		function search() {
+			var keyword = document.getElementById("keyword").value;
+			window.close();
+			window.open("./search.jsp?keyword=" + keyword);
 		};
 	</script>
 </body>

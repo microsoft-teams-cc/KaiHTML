@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="row">
-		<form id="search" class="form-inline">
+		<form id="search" class="form-inline" onsubmit="search()">
 			<div class="form-group">
 				&emsp;&emsp;&emsp;
 				<label class="sr-only">Search</label> <input type="text"
@@ -163,6 +163,12 @@
 										+ '</tr>';
 								$("#typesBody").append(row);  
 							});
+		};
+		
+		function search() {
+			var keyword = document.getElementById("keyword").value;
+			window.close();
+			window.open("./search.jsp?keyword=" + keyword);
 		};
 	</script>
 </body>

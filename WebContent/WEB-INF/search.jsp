@@ -49,21 +49,22 @@
 					
 					var parameters = location.search.substring(1).split("&");
 					var temp = parameters[0].split("=");
-					var type = temp[1];
-					var types = JSON.parse(localStorage.types);
-					fillProjects(type,types);
+					var key = temp[1];
+					fillProjects(key);
 				});
 		
-		function fillProjects(type,types) {
+		function fillProjects(keyword) {
 			var projects = JSON.parse(localStorage.projects);
 			var projectTypes = JSON.parse(localStorage.projectTypes);
 			var descriptions = JSON.parse(localStorage.descriptions); 
-			var statuses = JSON.parse(localStorage.statuses); 
+			var statuses = JSON.parse(localStorage.statuses);
+			var jiras = JSON.parse(localStorage.jiras);
 			$("#projectsBody").empty();
-			$.each(projectTypes,function(i, type_i) {
-				if(type_i.replace(/\s/g, "") == type && statuses[i] == "Approved"){
+			var enter = false;
+			$.each(projects,function(i, project) {
+				if(statuses[i] == "Approved" && (project.includes(keyword) == true || descriptions[i].includes(keyword)==true || jiras[i].includes(keyword)==true )){
 					var rowclass = "info";
-					var project = projects[i];
+					enter = true;
 				    var projectLink = '<a href="project.jsp?project=' + project.replace(/\s/g, "") + '" class="btn btn-primary""> Explore </a>';
 					var row = '<tr class="' + rowclass + '">'
 										+ '<td>'
@@ -79,6 +80,9 @@
 								$("#projectsBody").append(row);  
 							}
 			});
+			if(enter == false){
+				alert("No projects matched your search");
+			}
 		};
 		
 		function search() {
